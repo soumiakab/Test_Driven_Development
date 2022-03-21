@@ -2,11 +2,7 @@ package com.test_driven_development.service;
 
 import com.test_driven_development.entity.Client;
 import com.test_driven_development.repository.ClientRepositoryI;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,12 +10,11 @@ import java.util.List;
 @Service
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
+@RequiredArgsConstructor
 public class ClientService {
 
-    @Autowired
-    private ClientRepositoryI clientRepositoryI;
+
+    private final ClientRepositoryI clientRepositoryI;
 
     public Client saveClient(Client client){
         return clientRepositoryI.save(client);
@@ -51,3 +46,4 @@ public class ClientService {
     }
 
 }
+//diff between allargs controller and require

@@ -28,7 +28,7 @@ public class Client {
     private String email;
 
     //    numéro de téléphone (unique, non null et valide pour un numéro de téléphone marocain)
-    @Pattern(regexp = "(\\+212|0)([ \\-_/]*)(\\d[ \\-_/]*){9}")
+    @Pattern(regexp = "(\\+212|1)(\\d){9}")
     @Column(name = "tel", nullable = false, unique = true)
     private String tel;
 
@@ -51,7 +51,5 @@ public class Client {
     //    isActive (boolean, default true)
     @Column(name = "is_active", nullable = false,columnDefinition="BOOLEAN DEFAULT 'true'")
     private Boolean isActive = false;
-
-
 
 }
