@@ -34,34 +34,34 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class ClientControllerTest {
 
 
-    @MockBean
-    ClientService clientService;
-
-    @InjectMocks
-    ClientController clientController;
-
-    @Autowired
-    private MockMvc mockMvc;
-
-    Client client;
-
-    @BeforeEach
-    void initClient(){
-        client=new Client(1L,"email@gmail.com","+2122828237","fullName",21, SexEnum.F,true);
-    }
-
-
-    @Test
-    void getAllClient() throws Exception {
-        List<Client> clients = new ArrayList<>();
-        clients.add(client);
-
-        given(clientService.getClient()).willReturn(clients);
-
-        mockMvc.perform(get("/api/client/all"))
-                .andExpect(status().isOk());
-
-    }
+//    @MockBean
+//    ClientService clientService;
+//
+//    @InjectMocks
+//    ClientController clientController;
+//
+//    @Autowired
+//    private MockMvc mockMvc;
+//
+//    Client client;
+//
+//    @BeforeEach
+//    void initClient(){
+//        client=new Client(1L,"email@gmail.com","+2122828237","fullName",21, SexEnum.F,true);
+//    }
+//
+//
+//    @Test
+//    void getAllClient() throws Exception {
+//        List<Client> clients = new ArrayList<>();
+//        clients.add(client);
+//
+//        given(clientService.getClient()).willReturn(clients);
+//
+//        mockMvc.perform(get("/api/client/all"))
+//                .andExpect(status().isOk());
+//
+//    }
 
     @Test
     void findClientById() {
