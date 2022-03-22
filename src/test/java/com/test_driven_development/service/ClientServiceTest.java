@@ -28,66 +28,66 @@ import static org.mockito.Mockito.*;
 @RunWith(MockitoJUnitRunner.Silent.class)
 class ClientServiceTest {
 
-    @Mock
-    ClientRepositoryI clientRepositoryI;
-
-    @InjectMocks
-    ClientService clientService;
-
-    Client client;
-
-    @BeforeEach
-    void initClient(){
-        client=new Client(1L,"email@gmail.com","+2122828237","fullName",21, SexEnum.F,true);
-    }
-
-    @Test
-    void saveClient() {
-        Mockito.lenient().when(clientRepositoryI.save(client)).thenReturn(client);
-       // Mockito.when(clientService.saveClient(client)).thenReturn(client);
-        Client client1= clientService.saveClient(client);
-        System.out.println(client);
-        System.out.println(client1);
-        assertThat(client).isEqualTo(client1);
-    }
-
-    @Test
-    void getClient() {
-        List<Client> clients = new ArrayList<>();
-        clients.add(client);
-
-        given(clientRepositoryI.findAll()).willReturn(clients);
-
-        List<Client> clients2 = clientService.getClient();
-
-        assertEquals(clients2, clients);
-
-        //to verify
-        verify(clientRepositoryI).findAll();
-    }
-
-    @Test
-    void getClientById() {
-       // doReturn(Optional.of(client)).when(clientRepositoryI).findById(1L);
-        Mockito.lenient().when(clientRepositoryI.findById(1L)).thenReturn(Optional.of(client));
-         //Mockito.when(clientService.getClientById(1L)).thenReturn(client);
-        Client client1= clientService.getClientById(1L);
-        assertThat(client1).isEqualTo(client);
-    }
-
-    @Test
-    void deleteClient() {
-        Mockito.lenient().when(clientRepositoryI.findById(1L)).thenReturn(Optional.of(client));
-        clientService.deleteClient(client.getId());
-
-    }
-
-    @Test
-    void updateClient() {
-        Mockito.lenient().when(clientRepositoryI.findById(1L)).thenReturn(Optional.of(client));
-        Mockito.lenient().when(clientRepositoryI.save(client)).thenReturn(client);
-        Client client1= clientService.updateClient(client);
-        assertThat(client).isEqualTo(client1);
-    }
+//    @Mock
+//    ClientRepositoryI clientRepositoryI;
+//
+//    @InjectMocks
+//    ClientService clientService;
+//
+//    Client client;
+//
+//    @BeforeEach
+//    void initClient(){
+//        client=new Client(1L,"email@gmail.com","+2122828237","fullName",21, SexEnum.F,true);
+//    }
+//
+//    @Test
+//    void saveClient() {
+//        Mockito.lenient().when(clientRepositoryI.save(client)).thenReturn(client);
+//       // Mockito.when(clientService.saveClient(client)).thenReturn(client);
+//        Client client1= clientService.saveClient(client);
+//        System.out.println(client);
+//        System.out.println(client1);
+//        assertThat(client).isEqualTo(client1);
+//    }
+//
+//    @Test
+//    void getClient() {
+//        List<Client> clients = new ArrayList<>();
+//        clients.add(client);
+//
+//        given(clientRepositoryI.findAll()).willReturn(clients);
+//
+//        List<Client> clients2 = clientService.getClient();
+//
+//        assertEquals(clients2, clients);
+//
+//        //to verify
+//        verify(clientRepositoryI).findAll();
+//    }
+//
+//    @Test
+//    void getClientById() {
+//       // doReturn(Optional.of(client)).when(clientRepositoryI).findById(1L);
+//        Mockito.lenient().when(clientRepositoryI.findById(1L)).thenReturn(Optional.of(client));
+//         //Mockito.when(clientService.getClientById(1L)).thenReturn(client);
+//        Client client1= clientService.getClientById(1L);
+//        assertThat(client1).isEqualTo(client);
+//    }
+//
+//    @Test
+//    void deleteClient() {
+//        Mockito.lenient().when(clientRepositoryI.findById(1L)).thenReturn(Optional.of(client));
+//        clientService.deleteClient(client.getId());
+//
+//    }
+//
+//    @Test
+//    void updateClient() {
+//        Mockito.lenient().when(clientRepositoryI.findById(1L)).thenReturn(Optional.of(client));
+//        Mockito.lenient().when(clientRepositoryI.save(client)).thenReturn(client);
+//        Client client1= clientService.updateClient(client);
+//        assertThat(client).isEqualTo(client1);
+//    }
 
 }
