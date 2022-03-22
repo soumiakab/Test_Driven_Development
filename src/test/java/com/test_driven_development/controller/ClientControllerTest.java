@@ -1,5 +1,7 @@
 package com.test_driven_development.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.test_driven_development.entity.Client;
 import com.test_driven_development.enumeration.SexEnum;
 import com.test_driven_development.repository.ClientRepositoryI;
@@ -109,7 +111,16 @@ class ClientControllerTest {
     }
 
     @Test
-    void updateClient() {
+    void updateClient() throws Exception {
+        given(clientService.updateClient(client)).willReturn(client);
+
+        ObjectMapper mapper = new ObjectMapper();
+
+        mockMvc.perform(put("/api/client/update")
+                        .content(mapper.writeValueAsString(client))
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andDo(MockMvcResultHandlers.print());
     }
 
     @Test
