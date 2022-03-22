@@ -124,6 +124,11 @@ class ClientControllerTest {
     }
 
     @Test
-    void deleteClient() {
+    void deleteClient() throws Exception {
+        given(clientService.deleteClient(client.getId())).willReturn("deleted");
+
+        mockMvc.perform(delete("/api/client//delete/"+client.getId())
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
     }
 }
